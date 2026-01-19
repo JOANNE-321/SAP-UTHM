@@ -31,7 +31,10 @@
 
                                 <VBox class="sapUiSmallMarginBottom">
                                     <Label text="Outcome" design="Bold" />
-                                    <ObjectStatus text="{mock>Outcome}" state="Success" class="statusBadgeSuccess" />
+                                    <ObjectStatus 
+                                        text="{mock>Outcome}" 
+                                        state="{= ${mock>Outcome}.includes('Approved') || ${mock>Outcome}.includes('Success') ? 'Success' : 'Information' }" 
+                                        class="statusBadgeSuccess" />
                                 </VBox>
 
                                 <VBox visible="{= ${mock>Documents}.length > 0 }">

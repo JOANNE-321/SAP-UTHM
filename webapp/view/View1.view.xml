@@ -1,6 +1,55 @@
 <mvc:View controllerName="project1.controller.View1"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+    <Page title="Dashboard" class="sapUiContentPadding">
+        <content>
+            <VBox class="sapUiResponsiveMargin">
+                <Title text="Welcome back, Student" level="H1" class="sapUiMediumMarginBottom" />
+                
+                <layout:Grid containerQuery="true" defaultSpan="XL4 L4 M6 S12">
+                    <VBox class="customCard">
+                        <HBox justifyContent="SpaceBetween" alignItems="Center">
+                            <VBox>
+                                <Title text="Advising History" level="H3" />
+                                <Text text="2 Recent Sessions" />
+                            </VBox>
+                            <core:Icon src="sap-icon://history" size="2rem" color="#1e40af" />
+                        </HBox>
+                        <Button text="View History" type="Transparent" class="sapUiSmallMarginTop" press="onNavToAdvising" />
+                    </VBox>
+
+                    <VBox class="customCard">
+                        <HBox justifyContent="SpaceBetween" alignItems="Center">
+                            <VBox>
+                                <Title text="Documents" level="H3" />
+                                <Text text="3 Saved Documents" />
+                            </VBox>
+                            <core:Icon src="sap-icon://documents" size="2rem" color="#1e40af" />
+                        </HBox>
+                        <Button text="Manage Documents" type="Transparent" class="sapUiSmallMarginTop" press="onNavToDocuments" />
+                    </VBox>
+
+                    <VBox class="customCard">
+                        <HBox justifyContent="SpaceBetween" alignItems="Center">
+                            <VBox>
+                                <Title text="Quick Upload" level="H3" />
+                                <Text text="Need to link a file?" />
+                            </VBox>
+                            <core:Icon src="sap-icon://upload-to-cloud" size="2rem" color="#1e40af" />
+                        </HBox>
+                        <Button text="Upload Now" type="Emphasized" class="sapUiSmallMarginTop" press="onNavToUpload" />
+                    </VBox>
+                </layout:Grid>
+
+                <Panel headerText="Upcoming Appointments" class="customCard sapUiMediumMarginTop" expandable="false">
+                    <List noDataText="No upcoming appointments.">
+                        <StandardListItem title="Semester 2 Registration Help" description="Tomorrow at 10:00 AM" icon="sap-icon://appointment" />
+                    </List>
+                </Panel>
+            </VBox>
+        </content>
     </Page>
 </mvc:View>

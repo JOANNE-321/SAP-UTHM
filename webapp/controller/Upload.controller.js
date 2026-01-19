@@ -12,7 +12,9 @@ sap.ui.define([
             var oView = this.getView();
             var oFileUploader = oView.byId("fileUploader");
             var sDocType = oView.byId("docTypeSelect").getSelectedItem().getText();
-            var sSession = oView.byId("sessionSelect").getSelectedItem().getText();
+            var oSessionItem = oView.byId("sessionSelect").getSelectedItem();
+            var sSessionKey = oSessionItem.getKey();
+            var sSessionText = oSessionItem.getText();
             var sDescription = oView.byId("docDescription").getValue();
 
             if (!oFileUploader.getValue()) {
@@ -23,20 +25,37 @@ sap.ui.define([
             // Simulate Upload Logic
             var oModel = this.getOwnerComponent().getModel("mock");
             var aDocs = oModel.getProperty("/Documents") || [];
+            var aSessions = oModel.getProperty("/AdvisingSessions") || [];
 
             var oNewDoc = {
                 Name: oFileUploader.getValue(),
                 Type: sDocType,
                 Size: (Math.random() * 5 + 0.5).toFixed(1) + " MB",
                 Date: new Date().toLocaleDateString(),
-                Session: sSession === "No Session (General)" ? "None" : sSession,
+                Session: sSessionKey === "None" ? "None" : sSessionText,
                 Status: "Success"
             };
 
+            // 1. Add to global Documents list
             aDocs.unshift(oNewDoc);
             oModel.setProperty("/Documents", aDocs);
 
-            MessageToast.show("Document uploaded successfully!");
+            // 2. Link to specific Advising Session if selected
+            if (sSessionKey !== "None") {
+                var oSession = aSessions.find(s => s.ID === sSessionKey);
+                if (oSession) {
+                    if (!oSession.Documents) {
+                        oSession.Documents = [];
+                    }
+                    oSession.Documents.push({
+                        Name: oNewDoc.Name,
+                        Type: oNewDoc.Type
+                    });
+                }
+            }
+            oModel.setProperty("/AdvisingSessions", aSessions);
+
+            MessageToast.show("Document uploaded and linked successfully!");
 
             // Clear form
             oFileUploader.setValue("");
