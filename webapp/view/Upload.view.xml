@@ -3,54 +3,65 @@
     xmlns:f="sap.ui.layout.form"
     xmlns:u="sap.ui.unified"
     xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
     xmlns="sap.m">
     <Page title="Upload Documents" class="sapUiContentPadding">
         <content>
-            <VBox class="sapUiSmallMargin">
-                <Text text="Upload and link documents to advising records" class="sapUiSmallMarginBottom" />
-                
-                <f:SimpleForm editable="true" layout="ResponsiveGridLayout">
-                    <f:content>
-                        <Label text="Document Type" required="true" />
-                        <Select id="docTypeSelect" items="{path: 'mock>/DocTypes'}">
-                            <core:Item key="{mock>Key}" text="{mock>Text}" />
-                        </Select>
+            <VBox class="sapUiResponsiveMargin">
+                <VBox class="customCard sapUiMediumMarginBottom">
+                    <Title text="Document Details" level="H2" class="sapUiSmallMarginBottom" />
+                    <Text text="Upload and link documents to your advising sessions for better tracking." class="sapUiSmallMarginBottom" />
+                    
+                    <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1">
+                        <f:content>
+                            <Label text="Document Type" required="true" />
+                            <Select id="docTypeSelect" items="{mock>/DocTypes}">
+                                <core:Item key="{mock>Key}" text="{mock>Text}" />
+                            </Select>
 
-                        <Label text="Link to Advising Session (Optional)" />
-                        <Select id="sessionSelect" items="{path: 'mock>/AdvisingSessions'}">
-                            <core:Item key="{mock>ID}" text="{mock>Title} ({mock>Date})" />
-                        </Select>
+                            <Label text="Link to Advising Session" />
+                            <Select id="sessionSelect" items="{path: 'mock>/AdvisingSessions'}">
+                                <core:Item key="{mock>ID}" text="{mock>Title} ({mock>Date})" />
+                                <core:ListItem key="None" text="No Session (General)" />
+                            </Select>
 
-                        <Label text="Description / Notes" />
-                        <TextArea id="docDescription" rows="4" placeholder="Enter any additional notes here..." />
+                            <Label text="Description / Notes" />
+                            <TextArea id="docDescription" rows="4" placeholder="Briefly describe the document contents..." />
 
-                        <Label text="Upload File" required="true" />
-                        <u:FileUploader
-                            id="fileUploader"
-                            name="myFileUpload"
-                            uploadUrl="upload/"
-                            tooltip="Upload your file here"
-                            uploadComplete="handleUploadComplete"
-                            change="handleValueChange"
-                            typeMissmatch="handleTypeMissmatch"
-                            style="Emphasized"
-                            placeholder="Choose a file or drag &amp; drop here..."
-                            fileType="pdf,doc,docx,jpg,png"
-                            maximumFileSize="10"
-                            fileSizeExceed="handleFileSizeExceed">
-                        </u:FileUploader>
-                        <Text text="Supported formats: PDF, DOC, DOCX, JPG, PNG (Max 10MB)" />
-                    </f:content>
-                </f:SimpleForm>
+                            <Label text="Select File" required="true" />
+                            <u:FileUploader
+                                id="fileUploader"
+                                name="myFileUpload"
+                                tooltip="Upload your file here"
+                                style="Emphasized"
+                                placeholder="Choose a file..."
+                                fileType="pdf,doc,docx,jpg,png"
+                                maximumFileSize="10">
+                            </u:FileUploader>
+                            <Text text="Supported: PDF, DOC, DOCX, JPG, PNG (Max 10MB)" class="sapUiTinyMarginTop" />
+                        </f:content>
+                    </f:SimpleForm>
 
-                <Button text="Upload Document" type="Emphasized" press="onUploadPress" class="sapUiSmallMarginTop" width="200px" />
+                    <HBox justifyContent="Start" class="sapUiMediumMarginTop">
+                        <Button text="Upload Document" type="Emphasized" press="onUploadPress" icon="sap-icon://upload-to-cloud" />
+                    </HBox>
+                </VBox>
 
-                <Panel headerText="Quick Tips" class="sapUiMediumMarginTop" expandable="true" expanded="true">
-                    <VBox>
-                        <Text text="• Ensure documents are clear and readable." />
-                        <Text text="• Linking a document to an advising session helps your advisor track progress." />
-                        <Text text="• For multiple documents, please upload them one by one." />
-                    </VBox>
+                <Panel headerText="Quick Tips" class="customCard" expandable="true" expanded="true">
+                    <layout:VerticalLayout>
+                        <HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                            <core:Icon src="sap-icon://message-information" color="#1e40af" class="sapUiSmallMarginEnd" />
+                            <Text text="Ensure documents are clear and high-resolution." />
+                        </HBox>
+                        <HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                            <core:Icon src="sap-icon://link" color="#1e40af" class="sapUiSmallMarginEnd" />
+                            <Text text="Linking to a session helps your advisor review contextual documents." />
+                        </HBox>
+                        <HBox alignItems="Center">
+                            <core:Icon src="sap-icon://attachment" color="#1e40af" class="sapUiSmallMarginEnd" />
+                            <Text text="You can upload multiple documents by repeating the process." />
+                        </HBox>
+                    </layout:VerticalLayout>
                 </Panel>
             </VBox>
         </content>

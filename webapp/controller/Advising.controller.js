@@ -9,8 +9,8 @@ sap.ui.define([
         },
 
         onDocumentPress: function (oEvent) {
-            var sDocName = oEvent.getSource().getTitle();
-            MessageToast.show("Opening document: " + sDocName);
+            var oItem = oEvent.getSource();
+            MessageToast.show("Viewing document: " + oItem.getTitle());
         }
     });
 });

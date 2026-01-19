@@ -1,1 +1,82 @@
-/* Enter your custom styles here */
+/* Global Styles */
+.sapUiBody {
+    background-color: #f8fafc !important;
+}
+
+/* Custom Card Styling */
+.customCard {
+    background: #ffffff;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+}
+
+/* Sidebar Styling */
+.sapTntSideNavigation {
+    background-color: #ffffff !important;
+    border-right: 1px solid #e2e8f0 !important;
+}
+
+/* Header Styling */
+.sapTntToolHeader {
+    background-color: #1e40af !important; /* Deep Blue */
+    color: white !important;
+}
+
+.sapTntToolHeader .sapMTitle {
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+/* Table Design */
+.sapMListTbl {
+    border-radius: 8px !important;
+    overflow: hidden;
+    border: 1px solid #e2e8f0 !important;
+}
+
+.sapMListTblHeaderCell {
+    background-color: #f1f5f9 !important;
+}
+
+/* Status Badges */
+.statusBadgeSuccess {
+    color: #15803d !important;
+    background: #f0fdf4 !important;
+    padding: 0.25rem 0.75rem !important;
+    border-radius: 9999px !important;
+    font-weight: 500 !important;
+}
+
+.statusBadgeWarning {
+    color: #b45309 !important;
+    background: #fffbeb !important;
+    padding: 0.25rem 0.75rem !important;
+    border-radius: 9999px !important;
+    font-weight: 500 !important;
+}
+
+.statusBadgeError {
+    color: #b91c1c !important;
+    background: #fef2f2 !important;
+    padding: 0.25rem 0.75rem !important;
+    border-radius: 9999px !important;
+    font-weight: 500 !important;
+}
+
+/* Timeline Enhancements */
+.sapSuiteUiCommonsTimelineItem {
+    border-radius: 12px !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Typography */
+.sapMText {
+    color: #475569 !important;
+}
+
+.textBold {
+    font-weight: 600 !important;
+    color: #1e293b !important;
+}
