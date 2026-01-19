@@ -1,0 +1,41 @@
+<mvc:View controllerName="project1.controller.Documents"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="My Documents" class="sapUiContentPadding">
+        <content>
+            <Table id="docsTable" items="{mock>/Documents}" growing="true" growingThreshold="10">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="Document Library" level="H2" />
+                        <ToolbarSpacer />
+                        <SearchField width="300px" placeholder="Search documents..." search="onSearch" />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column><Text text="Document Name" /></Column>
+                    <Column demandPopin="true" minScreenWidth="Tablet"><Text text="Type" /></Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop"><Text text="Size" /></Column>
+                    <Column demandPopin="true" minScreenWidth="Tablet"><Text text="Upload Date" /></Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop"><Text text="Linked Session" /></Column>
+                    <Column hAlign="End"><Text text="Actions" /></Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Inactive">
+                        <cells>
+                            <ObjectIdentifier title="{mock>Name}" />
+                            <ObjectStatus text="{mock>Type}" state="{mock>Status}" />
+                            <Text text="{mock>Size}" />
+                            <Text text="{mock>Date}" />
+                            <Text text="{mock>Session}" />
+                            <HBox justifyContent="End">
+                                <Button icon="sap-icon://attachment-html" type="Transparent" tooltip="View" press="onViewPress" />
+                                <Button icon="sap-icon://download" type="Transparent" tooltip="Download" press="onDownloadPress" />
+                                <Button icon="sap-icon://delete" type="Transparent" tooltip="Delete" press="onDeletePress" />
+                            </HBox>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

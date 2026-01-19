@@ -1,0 +1,77 @@
+{
+    "AdvisingSessions": [
+        {
+            "ID": "S001",
+            "Title": "Course Registration Support",
+            "Date": "2024-01-15",
+            "Time": "10:30 AM",
+            "Advisor": "Dr. Sarah Johnson",
+            "Summary": "Discussed elective options for the upcoming semester and prerequisite requirements for Advanced Web Dev.",
+            "Outcome": "Study plan updated; student approved for overloading 1 credit.",
+            "Documents": [
+                {
+                    "Name": "Revised_Study_Plan.pdf",
+                    "Type": "Study Plan"
+                }
+            ]
+        },
+        {
+            "ID": "S002",
+            "Title": "Academic Performance Review",
+            "Date": "2023-11-20",
+            "Time": "02:00 PM",
+            "Advisor": "Prof. Michael Chen",
+            "Summary": "Reviewed mid-semester results. Discussion on improving study habits and time management.",
+            "Outcome": "Referred to peer tutoring program.",
+            "Documents": []
+        }
+    ],
+    "Documents": [
+        {
+            "Name": "Revised_Study_Plan.pdf",
+            "Type": "Study Plan",
+            "Size": "1.2 MB",
+            "Date": "2024-01-15",
+            "Session": "Course Registration Support",
+            "Status": "Success"
+        },
+        {
+            "Name": "Appeal_Letter_V2.docx",
+            "Type": "Appeal Letter",
+            "Size": "450 KB",
+            "Date": "2024-01-10",
+            "Session": "None",
+            "Status": "Warning"
+        },
+        {
+            "Name": "Medical_Report_Jan.pdf",
+            "Type": "Medical Report",
+            "Size": "2.8 MB",
+            "Date": "2024-01-12",
+            "Session": "None",
+            "Status": "Error"
+        }
+    ],
+    "DocTypes": [
+        {
+            "Key": "StudyPlan",
+            "Text": "Study Plan"
+        },
+        {
+            "Key": "Appeal",
+            "Text": "Appeal Letter"
+        },
+        {
+            "Key": "Transcript",
+            "Text": "Transcript"
+        },
+        {
+            "Key": "Medical",
+            "Text": "Medical Report"
+        },
+        {
+            "Key": "Cert",
+            "Text": "Certificate"
+        }
+    ]
+}

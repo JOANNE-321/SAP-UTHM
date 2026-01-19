@@ -1,7 +1,36 @@
 <mvc:View controllerName="project1.controller.App"
     displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt"
     xmlns="sap.m">
-    <App id="app">
-    </App>
+    <tnt:ToolPage id="toolPage">
+        <tnt:header>
+            <tnt:ToolHeader>
+                <Button id="sideNavigationToggleButton"
+                    icon="sap-icon://menu2"
+                    type="Transparent"
+                    press=".onSideNavButtonPress" />
+                <ToolbarSpacer width="20px" />
+                <Title text="Student Advising Records &amp; Document Uploads" level="H1" />
+                <ToolbarSpacer />
+                <tnt:ToolHeaderUtilitySeparator />
+                <ToolbarSpacer width="10px" />
+                <Avatar src="sap-icon://person-placeholder" displaySize="XS" />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
+            <tnt:SideNavigation expanded="true" itemSelect=".onItemSelect">
+                <tnt:NavigationList>
+                    <tnt:NavigationListItem text="Dashboard" icon="sap-icon://home" />
+                    <tnt:NavigationListItem text="Booking Appointment" icon="sap-icon://appointment-2" />
+                    <tnt:NavigationListItem text="My History &amp; Notes" icon="sap-icon://history" key="advising" />
+                    <tnt:NavigationListItem text="My Documents" icon="sap-icon://documents" key="documents" />
+                    <tnt:NavigationListItem text="Upload Documents" icon="sap-icon://upload-to-cloud" key="upload" />
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <App id="app" />
+        </tnt:mainContents>
+    </tnt:ToolPage>
 </mvc:View>

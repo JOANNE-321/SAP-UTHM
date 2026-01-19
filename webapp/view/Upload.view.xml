@@ -1,0 +1,58 @@
+<mvc:View controllerName="project1.controller.Upload"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page title="Upload Documents" class="sapUiContentPadding">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Text text="Upload and link documents to advising records" class="sapUiSmallMarginBottom" />
+                
+                <f:SimpleForm editable="true" layout="ResponsiveGridLayout">
+                    <f:content>
+                        <Label text="Document Type" required="true" />
+                        <Select id="docTypeSelect" items="{path: 'mock>/DocTypes'}">
+                            <core:Item key="{mock>Key}" text="{mock>Text}" />
+                        </Select>
+
+                        <Label text="Link to Advising Session (Optional)" />
+                        <Select id="sessionSelect" items="{path: 'mock>/AdvisingSessions'}">
+                            <core:Item key="{mock>ID}" text="{mock>Title} ({mock>Date})" />
+                        </Select>
+
+                        <Label text="Description / Notes" />
+                        <TextArea id="docDescription" rows="4" placeholder="Enter any additional notes here..." />
+
+                        <Label text="Upload File" required="true" />
+                        <u:FileUploader
+                            id="fileUploader"
+                            name="myFileUpload"
+                            uploadUrl="upload/"
+                            tooltip="Upload your file here"
+                            uploadComplete="handleUploadComplete"
+                            change="handleValueChange"
+                            typeMissmatch="handleTypeMissmatch"
+                            style="Emphasized"
+                            placeholder="Choose a file or drag &amp; drop here..."
+                            fileType="pdf,doc,docx,jpg,png"
+                            maximumFileSize="10"
+                            fileSizeExceed="handleFileSizeExceed">
+                        </u:FileUploader>
+                        <Text text="Supported formats: PDF, DOC, DOCX, JPG, PNG (Max 10MB)" />
+                    </f:content>
+                </f:SimpleForm>
+
+                <Button text="Upload Document" type="Emphasized" press="onUploadPress" class="sapUiSmallMarginTop" width="200px" />
+
+                <Panel headerText="Quick Tips" class="sapUiMediumMarginTop" expandable="true" expanded="true">
+                    <VBox>
+                        <Text text="• Ensure documents are clear and readable." />
+                        <Text text="• Linking a document to an advising session helps your advisor track progress." />
+                        <Text text="• For multiple documents, please upload them one by one." />
+                    </VBox>
+                </Panel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

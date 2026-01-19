@@ -1,0 +1,40 @@
+<mvc:View controllerName="project1.controller.Advising"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:suite="sap.suite.ui.commons"
+    xmlns="sap.m">
+    <Page title="Advising History" class="sapUiContentPadding">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <suite:Timeline id="advisingTimeline" 
+                    enableScroll="false"
+                    sortOldestFirst="false"
+                    content="{mock>/AdvisingSessions}">
+                    <suite:TimelineItem
+                        dateTime="{mock>Date}"
+                        title="{mock>Title}"
+                        userName="{mock>Advisor}"
+                        icon="sap-icon://person-placeholder"
+                        filterValue="{mock>Advisor}">
+                        <suite:embeddedControl>
+                            <VBox>
+                                <Text text="Time: {mock>Time}" class="sapUiSmallMarginBottom" />
+                                <Panel headerText="Discussion Summary" expandable="true" expanded="true">
+                                    <Text text="{mock>Summary}" />
+                                </Panel>
+                                <Panel headerText="Outcome" expandable="true" expanded="false">
+                                    <Text text="{mock>Outcome}" />
+                                </Panel>
+                                <VBox class="sapUiSmallMarginTop" visible="{= ${mock>Documents}.length > 0 }">
+                                    <Label text="Linked Documents:" design="Bold" />
+                                    <List items="{mock>Documents}" separators="None">
+                                        <StandardListItem title="{mock>Name}" icon="sap-icon://attachment" type="Active" press="onDocumentPress" />
+                                    </List>
+                                </VBox>
+                            </VBox>
+                        </suite:embeddedControl>
+                    </suite:TimelineItem>
+                </suite:Timeline>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
